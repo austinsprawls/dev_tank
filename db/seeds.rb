@@ -38,7 +38,8 @@ lendee = Lendee.create([
 
 lenders = Lender.create([
     {email: 'dcox@gmail.com',
-    password: 'dc9082102',}
+    password: 'dc9082102',
+    state_residence: 'TX'}
 ])
 
 expiration = Date.parse('2015-01-06')
