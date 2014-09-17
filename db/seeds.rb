@@ -47,11 +47,11 @@ loans = Loan.create([
   {lendee_id: lendee.first.id,
   amount: 7000,
   expiration_date: expiration
-  },
-  {lendee_id: lendee[1].id,
-  amount: 10000,
-  expiration_date: expiration
   }
+  # {lendee_id: lendee[1].id,
+  # amount: 10000,
+  # expiration_date: expiration
+  # }
 ])
 
 investments = Investment.create([
@@ -59,6 +59,6 @@ investments = Investment.create([
   loan_id: loans.first.id,
   amount: 2000},
   {lender_id: lenders.first.id,
-  loan_id: loans[1].id,
+  loan_id: loans.first.id,
   amount: 5000}
 ])
