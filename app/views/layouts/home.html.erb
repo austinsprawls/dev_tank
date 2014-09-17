@@ -54,23 +54,16 @@
             <li><%= link_to "About", about_path  %></li>
           </ul>
         </div>
-        <% if current_lendee %>
-            <%= menu_item "Log Out", log_out_path %>
-        <% else %>
-            <%= form_for @lendee, :url => session_path(:lendee), :html => {:class=> "navbar-form pull-right"} do |f| -%>
-              <p><%= f.text_field :email %></p>
-              <p><%= f.password_field :password %></p>
-              <p><%= f.submit "Sign in" %></p>
-            <% end -%>
-        <% end %>
       </div>
     </div>
 
     <div class="jumbotron jumbo-index">
-      <div class="container">
-        <h2>Dev_Tank is the easiest and most affordable way to fund your tech education</h2>
-        <h3>even if your credit is lacking</h3>
-        <p><a class="btn btn-primary btn-lg" role="button">Get a Loan</a></p>
+      <div class="opaque">
+        <div class="container">
+          <h2>Dev_Tank is the easiest and most affordable way to fund your tech education</h2>
+          <h3>even if your credit is lacking</h3>
+          <p><a class="btn btn-primary btn-lg" role="button">Get a Loan</a></p>
+        </div>
       </div>
     </div>
 

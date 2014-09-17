@@ -11,21 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917165844) do
+ActiveRecord::Schema.define(version: 20140917184220) do
+
+  create_table "investments", force: true do |t|
+    t.integer  "lender_id"
+    t.integer  "loan_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "lendees", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                    default: "", null: false
+    t.string   "encrypted_password",       default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",            default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.date     "date_of_birth"
+    t.float    "yearly_individual_income"
+    t.float    "yearly_additional_income"
+    t.string   "credit_range"
+    t.integer  "loan_id"
   end
 
   add_index "lendees", ["email"], name: "index_lendees_on_email", unique: true
@@ -48,5 +66,14 @@ ActiveRecord::Schema.define(version: 20140917165844) do
 
   add_index "lenders", ["email"], name: "index_lenders_on_email", unique: true
   add_index "lenders", ["reset_password_token"], name: "index_lenders_on_reset_password_token", unique: true
+
+  create_table "loans", force: true do |t|
+    t.integer  "lendee_id"
+    t.float    "amount"
+    t.boolean  "funded?",         default: false
+    t.date     "expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
