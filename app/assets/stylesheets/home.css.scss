@@ -1,0 +1,23 @@
+.jumbo-index{
+  background: url('tech_office.jpg');
+  background-size: cover;
+  height: 480px;
+  h2, h3 {
+    color: white;
+  }
+}
+
+.nav-index-top{
+  background: transparent;
+  border: none;
+  .container a{
+    color: white;
+  }
+}
+
+.nav-index-scroll{
+  background: white;
+  .container a{
+    color: blue;
+  }
+}
