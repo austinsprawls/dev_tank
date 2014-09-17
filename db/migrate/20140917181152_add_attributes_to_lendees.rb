@@ -10,6 +10,5 @@ class AddAttributesToLendees < ActiveRecord::Migration
     add_column :lendees, :yearly_individual_income, :float
     add_column :lendees, :yearly_additional_income, :float
     add_column :lendees, :credit_range, :string
-    add_column :lendees, :loan_id, :integer
   end
 end

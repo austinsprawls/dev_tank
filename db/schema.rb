@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917184220) do
+ActiveRecord::Schema.define(version: 20140917191901) do
 
   create_table "investments", force: true do |t|
     t.integer  "lender_id"
     t.integer  "loan_id"
+    t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,7 +44,6 @@ ActiveRecord::Schema.define(version: 20140917184220) do
     t.float    "yearly_individual_income"
     t.float    "yearly_additional_income"
     t.string   "credit_range"
-    t.integer  "loan_id"
   end
 
   add_index "lendees", ["email"], name: "index_lendees_on_email", unique: true
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140917184220) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state_of_residence"
   end
 
   add_index "lenders", ["email"], name: "index_lenders_on_email", unique: true
