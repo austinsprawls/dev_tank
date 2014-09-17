@@ -3,6 +3,10 @@ class HomeController < ApplicationController
     @lendee = Lendee.new
   end
 
+  def check_rate
+
+  end
+
   def invest
     render :layout => 'home_ancillary'
   end
@@ -18,4 +22,6 @@ class HomeController < ApplicationController
   def about
     render :layout => 'home_ancillary'
   end
+
+
 end

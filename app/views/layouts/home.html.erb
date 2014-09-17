@@ -67,14 +67,12 @@
               </div>
               <div class="col-md-4">
                 <h3>Check your rate</h3>
-                <%= form_for :lendee do |f| %>
-                  <%= fields_for :loan do |loan_field| %>
-                    <%= loan_field.number_field :amount, placeholder: 'How much do you need?' %>
-                  <% end %>
-                  <%= f.select(:credit_range, options_for_select([['Poor( less than 600)', 'below 600'], ['Fair (600-660)', '600-660'], ['Good (660-720)', '660-720'], ['Excellent (720+)', '720+']]), placeholder: "What's yoru credit?") %>
+                <%= form_tag '/check_rate', method: :post do -%>
+                  <%= text_field_tag 'amount', nil, placeholder: 'How much do you need?' %>
+                  <%= select_tag(:credit_range, options_for_select([['Poor( less than 600)', 'below 600'], ['Fair (600-660)', '600-660'], ['Good (660-720)', '660-720'], ['Excellent (720+)', '720+']]), placeholder: "What's yoru credit?") %>
                   <br />
-                  <%= f.submit 'Check Rate Now', class: 'btn btn-success'  %>
-                <% end %>
+                  <%= submit_tag 'Check Rate Now', class: 'btn btn-success'  %>
+                <% end -%>
               </div>
             </div>
           </div>
