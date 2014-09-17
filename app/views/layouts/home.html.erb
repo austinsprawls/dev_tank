@@ -54,6 +54,15 @@
             <li><%= link_to "About", about_path  %></li>
           </ul>
         </div>
+        <% if current_lendee %>
+            <%= menu_item "Log Out", log_out_path %>
+        <% else %>
+            <%= form_for @lendee, :url => session_path(:lendee), :html => {:class=> "navbar-form pull-right"} do |f| -%>
+              <p><%= f.text_field :email %></p>
+              <p><%= f.password_field :password %></p>
+              <p><%= f.submit "Sign in" %></p>
+            <% end -%>
+        <% end %>
       </div>
     </div>
 

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :lendees
+  devise_for :lenders
+  
   root 'home#index'
   get 'invest' => 'home#invest'
   get 'personal-loan' => 'home#personal_loan'
