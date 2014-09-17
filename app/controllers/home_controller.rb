@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @lendee = Lendee.new
   end
 
   def invest
