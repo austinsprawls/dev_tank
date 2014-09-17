@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  get 'invest' => 'home#invest'
+  get 'personal-loan' => 'home#personal_loan'
+  get 'how-it-works' => 'home#how_it_works'
+  get 'about' => 'home#about'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
