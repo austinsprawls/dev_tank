@@ -34,12 +34,12 @@ lendee = Lendee.create([
   yearly_individual_income: 12000,
   credit_range: '600-660',
   }
-  ])
+])
 
-lender = Lender.create([
+lenders = Lender.create([
     {email: 'dcox@gmail.com',
     password: 'dc9082102',}
-  ])
+])
 
 expiration = Date.parse('2015-01-06')
 
@@ -55,10 +55,10 @@ loans = Loan.create([
 ])
 
 investments = Investment.create([
-  {lender_id: lender.first.id,
-  loan_id: loan.first.id,
+  {lender_id: lenders.first.id,
+  loan_id: loans.first.id,
   amount: 2000},
-  {lender_id: lender.first.id,
-  loan_id: loan[1].id,
+  {lender_id: lenders.first.id,
+  loan_id: loans[1].id,
   amount: 5000}
 ])

@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem "twitter-bootstrap-rails"
 
 gem "devise"
+
+gem "hirb"
