@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'how-it-works' => 'home#how_it_works'
   get 'about' => 'home#about'
   post 'check_rate' => 'home#check_rate'
+
+  get 'profile' => 'lendees#show'
+  get 'profile/edit' => 'lendees#edit'
+  post 'profile/edit' => 'lendees#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
