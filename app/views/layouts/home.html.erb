@@ -68,8 +68,14 @@
               <div class="col-md-4">
                 <h3>Check your rate</h3>
                 <%= form_tag '/check_rate', method: :post do -%>
-                  <%= text_field_tag 'amount', nil, placeholder: 'How much do you need?' %>
-                  <%= select_tag(:credit_range, options_for_select([['Poor( less than 600)', 'below 600'], ['Fair (600-660)', '600-660'], ['Good (660-720)', '660-720'], ['Excellent (720+)', '720+']]), placeholder: "What's yoru credit?") %>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-addon">$</div>
+                        <%= text_field_tag 'amount', nil, placeholder: 'How much do you need?', class: 'form-control'%>
+                    </div>
+                  </div>
+                  <br />
+                  <%= select_tag(:credit_range, options_for_select([['Poor( less than 600)', 'below 600'], ['Fair (600-660)', '600-660'], ['Good (660-720)', '660-720'], ['Excellent (720+)', '720+']]), placeholder: "What's yoru credit?", class: 'form-control') %>
                   <br />
                   <%= submit_tag 'Check Rate Now', class: 'btn btn-success'  %>
                 <% end -%>

@@ -4,11 +4,11 @@ class HomeController < ApplicationController
   end
 
   def check_rate
-
+    render layout: 'home_ancillary'
   end
 
   def invest
-    render :layout => 'home_ancillary'
+    render layout: 'home_ancillary'
   end
 
   def personal_loan
