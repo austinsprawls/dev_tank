@@ -56,6 +56,12 @@
             <li><%= link_to "Invest", invest_path  %></li>
             <li><%= link_to "How It Works", how_it_works_path  %></li>
             <li><%= link_to "About", about_path  %></li>
+            <% if current_lender%>
+            <li><%= link_to "Sign Out", destroy_lender_session_path, method: :delete %></li>
+            <% end %>
+            <% if current_lendee%>
+            <li><%= link_to "Sign Out", destroy_lendee_session_path, method: :delete %></li>
+            <% end %>
           </ul>
         </div>
       </div>

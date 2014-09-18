@@ -1,44 +1,70 @@
 <h2>Check Your Rate</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :first_name %>
-  <%= f.text_field :first_name, autofocus: true %></div><br />
+    <div><%= f.hidden_field :credit_range, value: @credit_range, class: 'form-control'  %></div>
 
-  <div><%= f.label :last_name %>
-  <%= f.text_field :last_name, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :first_name %>
+      <%= f.text_field :first_name, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :street_address %>
-  <%= f.text_field :street_address, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :last_name %>
+      <%= f.text_field :last_name, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :city %>
-  <%= f.text_field :city, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :street_address %>
+      <%= f.text_field :street_address, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :state %>
-  <%= f.text_field :state, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :city %>
+      <%= f.text_field :city, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :zip_code %>
-  <%= f.text_field :zip_code, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :state %>
+      <%= f.text_field :state, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :date_of_birth %>
-  <%= f.date_field :date_of_birth, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :zip_code %>
+      <%= f.text_field :zip_code, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :date_of_birth %>
+      <%= f.date_field :date_of_birth, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %>
-    <%= f.password_field :password, autocomplete: "off" %></div><br />
+    <div class="form-group">
+      <div><%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div><br />
+    <div class="form-group">
+      <div><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :yearly_individual_income %>
-    <%= f.number_field :yearly_individual_income, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.label :yearly_additional_income %>
-  <%= f.number_field :yearly_additional_income, autofocus: true %></div><br />
+    <div class="form-group">
+      <div><%= f.label :yearly_individual_income %>
+        <%= f.number_field :yearly_individual_income, autofocus: true, class: 'form-control' %></div><br />
+    </div>
 
-  <div><%= f.submit "Get Your Rate", class: 'btn btn-default' %></div>
+    <div class="form-group">
+      <div><%= f.label :yearly_additional_income %>
+      <%= f.number_field :yearly_additional_income, autofocus: true, class: 'form-control' %></div><br />
+    </div>
+
+    <div><%= f.submit "Get Your Rate", class: 'btn btn-default' %></div>
 <% end %>
 <%= render "lendees/shared/links" %>
