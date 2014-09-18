@@ -5,4 +5,7 @@ class Lendee < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :loan
+
+  validates :first_name, :last_name, :street_address, :city, :state, :zip_code,
+            :date_of_birth, :yearly_individual_income, :credit_range, presence: true
 end

@@ -71,7 +71,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <div class="input-group-addon">$</div>
-                        <%= text_field_tag 'amount', nil, placeholder: 'How much do you need?', class: 'form-control'%>
+                        <%= number_field_tag 'amount', nil, placeholder: 'How much do you need?', class: 'form-control', in: 1000..15000%>
                     </div>
                   </div>
                   <br />

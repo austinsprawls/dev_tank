@@ -6,4 +6,6 @@ class Lender < ActiveRecord::Base
 
   has_many :investments
   has_many :loans, through: :investments
+
+  validates :state_of_residence, presence: true
 end
