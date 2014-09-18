@@ -5,9 +5,10 @@ class HomeController < ApplicationController
   end
 
   def check_rate
-    render layout: 'home_ancillary'
     @amount_requested = rate_params['amount']
+    @credit_range = rate_params['credit_range']
     puts @amount_requested
+    render layout: 'home_ancillary'
   end
 
   def invest
@@ -29,5 +30,6 @@ class HomeController < ApplicationController
   def rate_params
     params.permit('amount', 'credit_range')
   end
+
 
 end
