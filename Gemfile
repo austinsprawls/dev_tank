@@ -43,3 +43,5 @@ gem "twitter-bootstrap-rails"
 gem "devise"
 
 gem "hirb"
+
+gem "pry-byebug"

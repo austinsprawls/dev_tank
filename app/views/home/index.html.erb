@@ -2,6 +2,7 @@
     <div class="opaque">
       <div class="container">
         <div class="row">
+          <% if !current_lendee && !current_lender %>
           <div class="col-md-8">
             <h2>Fund your tech education from as low as 6.78% APR</h2>
           </div>
@@ -20,6 +21,11 @@
               <%= submit_tag 'Check Rate Now', class: 'btn btn-success'  %>
             <% end -%>
           </div>
+          <% else %>
+            <div class= "col-md-12">
+              <h2>Fund your tech education from as low as 6.78% APR</h2>
+            </div>
+          <% end %>
         </div>
       </div>
   </div>
