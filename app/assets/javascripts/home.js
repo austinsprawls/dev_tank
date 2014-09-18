@@ -1,4 +1,4 @@
 $(window).scroll(function(){
-  $('.navbar').removeClass('nav-index-top');
-  $('.navbar').addClass('nav-index-scroll');
+  $('.navbar-index').removeClass('nav-index-top');
+  $('.navbar-index').addClass('nav-index-scroll');
 });

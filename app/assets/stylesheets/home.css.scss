@@ -7,6 +7,14 @@
   }
 }
 
+.nav-ancillary-top{
+  background: white;
+  .container a{
+    color: blue;
+  }
+  border-bottom: 1px solid black;
+}
+
 .nav-index-top{
   background: transparent;
   border: none;
@@ -20,6 +28,8 @@
   .container a{
     color: blue;
   }
+  border-bottom: 1px solid black;
+  transition: all 0.5s ease-in-out;
 }
 
 .opaque{
