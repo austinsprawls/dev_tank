@@ -1,64 +1,57 @@
+<style>
+  .amount-funded{
+    color: green;
+  }
+</style>
+
 <%= render 'shared/navbar' %>
 
-  <div class="profile-panel">
-    <h1>Hi There, <%= current_lendee.first_name %>!</h1>
-  </div>
+<div class="profile-panel">
+  <h1>Hi There, <%= current_lendee.first_name %>!</h1>
+</div>
 
 <div class="container">
+  <% if current_lendee.loan %>
   <div class="row">
-    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-      <%= link_to "Edit Profile", profile_edit_path %>
-      <%= link_to "Logout", destroy_lendee_session_path %>
-      <br>
+    <div class="col-md-3">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Amount Funded</h2>
+        </div>
+        <div class="panel-body">
+          <h3 class="amount-funded">$<%= current_lendee.loan.amount_funded %></h3>
+          <p>(<%= current_lendee.loan.amount_funded / current_lendee.loan.amount %>% funded)</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Amount Remaining</h2>
+        </div>
+        <div class="panel-body">
+          <h3>$<%= current_lendee.loan.amount - current_lendee.loan.amount_funded %></h3>
+        </div>
+      </div>
+
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-          <div class="panel panel-info">
-            <div class="panel-heading">
-              <h3 class="panel-title"><%= @lendee.first_name %> <%= @lendee.last_name %></h3>
-            </div>
-            <div class="panel-body">
-              <div class="row">
-
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
-                <div class=" col-md-9 col-lg-9 col-md-offset-1">
-                  <table class="table table-user-information">
-                    <tbody>
-                      <tr>
-                        <td>email</td>
-                        <td><%= @lendee.email %></td>
-                      </tr>
-                      <tr>
-                        <td>credit range:</td>
-                        <td><%= @lendee.credit_range %></td>
-                      </tr>
-                      <tr>
-                        <td>Yearly Individual Income</td>
-                        <td><%= @lendee.yearly_individual_income %></td>
-                      </tr>
-
-                    </tbody>
-                  </table>
-                  <% if !@lendee.loan %>
-                    <button class="btn btn-default"><%= link_to "Start Loan Application", new_loan_path   %></button>
-                  <% else %>
-                    <button class="btn btn-default"><%= link_to "View Loan Request", loan_path(@lendee.loan.id) %></button>
-                    <button></button>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="col-md-9">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Investor Activity</h2>
+        </div>
+        <div class="panel-body">
+          <% @investments.each do |investment| %>
+            <table class="table table-striped">
+              <tr>
+                <td><%= investment.created_at %></td>
+                <td>$<%= investment.amount %></td>
+              </tr>
+            </table>
+          <% end %>
         </div>
       </div>
     </div>
+  </div>
+  <% end %>
+</div>
