@@ -41,14 +41,14 @@
           <h2 class="panel-title">Investor Activity</h2>
         </div>
         <div class="panel-body">
+          <table class="table table-striped">
           <% @investments.each do |investment| %>
-            <table class="table table-striped">
               <tr>
-                <td><%= investment.created_at %></td>
-                <td>$<%= investment.amount %></td>
+                <td><%= investment.created_at.strftime('%d %b') %></td>
+                <td>+ $<%= investment.amount %></td>
               </tr>
-            </table>
           <% end %>
+        </table>
         </div>
       </div>
     </div>
