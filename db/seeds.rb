@@ -47,7 +47,9 @@ expiration = Date.parse('2015-01-06')
 loans = Loan.create([
   {lendee_id: lendee.first.id,
   amount: 7000,
-  expiration_date: expiration
+  expiration_date: expiration,
+  rate: '7.68%',
+  term: 60
   }
   # {lendee_id: lendee[1].id,
   # amount: 10000,

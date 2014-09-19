@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   get 'profile' => 'lendees#show'
   get 'profile/edit' => 'lendees#edit'
-  post 'profile/edit' => 'lendees#update'
+  put 'profile/edit' => 'lendees#update'
 
   get 'portfolio' => 'lenders#show'
+
+  resources :loans
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

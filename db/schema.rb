@@ -71,7 +71,10 @@ ActiveRecord::Schema.define(version: 20140917191901) do
   create_table "loans", force: true do |t|
     t.integer  "lendee_id"
     t.float    "amount"
+    t.float    "amount_funded",   default: 0.0
     t.boolean  "funded?",         default: false
+    t.string   "rate"
+    t.integer  "term"
     t.date     "expiration_date"
     t.datetime "created_at"
     t.datetime "updated_at"
