@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
 
   def get_rate credit_range
     if credit_range == 'below 600'
-      '25.99%'
+      '24.63%'
     elsif credit_range == '600-660'
-      '16.29%'
+      '17.98%'
     elsif credit_range == '660-720'
       '12.99%'
     elsif credit_range == '720+'
-      '7.12%'
+      '7.71%'
     end
   end
 end

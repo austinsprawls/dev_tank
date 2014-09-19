@@ -7,6 +7,16 @@ body, html{
   height: 100%;
   margin: 0;
   padding: 0;
+  background: #F7F7F7;
+}
+
+.navbar-lendee{
+  background: white;
+  .navbar-brand{
+    color: #428bca;
+  }
+  border-bottom: 1px solid black;
+  margin-bottom: 0;
 }
 
 .navbar-index{
@@ -52,8 +62,12 @@ body, html{
       a{
         color: white;
       }
+      a:hover{
+        color: #428bca;
+      }
     }
   }
+  transition: all 0.5s ease-in-out;
 }
 
 .nav-index-scroll{
@@ -77,4 +91,16 @@ body, html{
   height: 100%;
   background: rgba(0,0,0,0.4);
   z-index: 999;
+}
+
+.profile-panel{
+  height: 85px;
+  background: #009CDE;
+  margin-bottom: 2%;
+  h1{
+    margin: 0;
+    padding: 1.5%;
+    color: white;
+    text-align: center;
+  }
 }

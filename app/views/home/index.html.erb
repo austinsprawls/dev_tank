@@ -13,9 +13,9 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-10 col-md-offset-2">
-            <h3>Check your rate</h3>
-            <%= form_tag '/check_rate', method: :post, class: 'form' do -%>
+          <div class="col-md-12">
+            <center><%= form_tag '/check_rate', method: :post, class: 'form' do -%>
+              <h3>Check your rate</h3>
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-addon">$</div>
@@ -26,7 +26,7 @@
               <br />
               <%= submit_tag 'Check Rate Now', class: 'btn btn-success'  %>
             </div>
-            <% end -%>
+            <% end -%></div>
           </div>
           <% else %>
             <div class= "col-md-12">
