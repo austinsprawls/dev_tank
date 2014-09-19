@@ -45,3 +45,5 @@ gem "devise"
 gem "hirb"
 
 gem "pry-byebug"
+
+gem 'google-webfonts'

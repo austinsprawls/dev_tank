@@ -7,10 +7,15 @@
   }
 }
 
+.navbar-brand{
+  font-family: 'Orbitron', sans-serif;
+}
+
+
 .nav-ancillary-top{
   background: white;
-  .container a{
-    color: blue;
+  .navbar-brand{
+    color: #428bca;
   }
   border-bottom: 1px solid black;
 }
@@ -18,15 +23,18 @@
 .nav-index-top{
   background: transparent;
   border: none;
-  .container a{
+  .navbar-brand{
+    color: white;
+  }
+  a{
     color: white;
   }
 }
 
 .nav-index-scroll{
   background: white;
-  .container a{
-    color: blue;
+  .navbar-brand{
+    color: #428bca;;
   }
   border-bottom: 1px solid black;
   transition: all 0.5s ease-in-out;
