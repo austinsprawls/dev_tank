@@ -1,17 +1,21 @@
 class LoansController < ApplicationController
 
   def show
-    puts current_lendee
     @loan = Loan.find_by(lendee_id: current_lendee.id)
   end
 
   def new
-    @loan = Loan.new(lendee_id: current_lendee.id)
   end
 
   def create
-    rate = 
-    @loan.update_attributes(loan_params)
+    rate = get_rate current_lendee.credit_range
+    if Loan.create(loan_params.merge(rate: rate, lendee_id: current_lendee.id))
+      flash[:success] = "Your loan was created successfully"
+      redirect_to profile_path
+    else
+      flash[:error] = "Something went wrong"
+      redirect_to new_loan_path
+    end
   end
 
   def edit

@@ -1,6 +1,6 @@
 
 <div class="container">
-  <%= form_for @loan do |f| %>
+  <%= form_for :loan do |f| %>
     Amount Requested: <%= f.number_field :amount, in: 1000..20000, class: 'form-control'%><br />
     Date Needed: <%= f.date_field :expiration_date, class: 'form-control' %>
     Term <%= f.select :term, [[36, 36], [60, 60]], class: 'form-control' %>
