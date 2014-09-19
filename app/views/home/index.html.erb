@@ -1,24 +1,31 @@
+<style>
+  .form{width: 25%;}
+  .row{margin-top: 10%;}
+  h2{text-align: center;}
+</style>
+<div class="opaque">
 <div class="jumbotron jumbo-index">
-    <div class="opaque">
       <div class="container">
         <div class="row">
           <% if !current_lendee && !current_lender %>
-          <div class="col-md-8">
+          <div class="col-md-10 col-md-offset-1">
             <h2>Fund your tech education from as low as 6.78% APR</h2>
           </div>
-          <div class="col-md-4">
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-5">
             <h3>Check your rate</h3>
-            <%= form_tag '/check_rate', method: :post do -%>
+            <%= form_tag '/check_rate', method: :post, class: 'form' do -%>
               <div class="form-group">
                 <div class="input-group">
                   <div class="input-group-addon">$</div>
                     <%= number_field_tag 'amount', nil, placeholder: 'How much do you need?', class: 'form-control', in: 1000..15000%>
                 </div>
               </div>
-              <br />
-              <%= select_tag(:credit_range, options_for_select([['Poor( less than 600)', 'below 600'], ['Fair (600-660)', '600-660'], ['Good (660-720)', '660-720'], ['Excellent (720+)', '720+']]), placeholder: "What's yoru credit?", class: 'form-control') %>
+              <%= select_tag(:credit_range, options_for_select([['Poor( less than 600)', 'below 600'], ['Fair (600-660)', '600-660'], ['Good (660-720)', '660-720'], ['Excellent (720+)', '720+']]), prompt: "Select your credit range", class: 'form-control') %>
               <br />
               <%= submit_tag 'Check Rate Now', class: 'btn btn-success'  %>
+            </div>
             <% end -%>
           </div>
           <% else %>
