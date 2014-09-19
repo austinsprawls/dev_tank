@@ -1,19 +1,19 @@
 <style>
-  .form{width: 25%;}
-  .row{margin-top: 10%;}
+  .form{width: 30%;}
+  .headline{margin-top: 10%;}
   h2{text-align: center;}
 </style>
-<div class="opaque">
+
 <div class="jumbotron jumbo-index">
       <div class="container">
-        <div class="row">
+        <div class="row headline">
           <% if !current_lendee && !current_lender %>
           <div class="col-md-10 col-md-offset-1">
             <h2>Fund your tech education from as low as 6.78% APR</h2>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-10 col-md-offset-5">
+          <div class="col-md-10 col-md-offset-2">
             <h3>Check your rate</h3>
             <%= form_tag '/check_rate', method: :post, class: 'form' do -%>
               <div class="form-group">
@@ -35,5 +35,4 @@
           <% end %>
         </div>
       </div>
-  </div>
 </div>
