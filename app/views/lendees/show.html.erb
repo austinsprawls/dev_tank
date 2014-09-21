@@ -7,21 +7,21 @@
 <%= render 'shared/navbar' %>
 
 <div class="profile-panel">
-  <h1>Hi There, <%= current_lendee.first_name %>!</h1>
+  <h1>Hi There, <%= @lendee.first_name %>!</h1>
 </div>
 
 <div class="container">
-  <% if current_lendee.loan %>
+  <% if @loan %>
   <div class="row">
     <div class="col-md-3">
 
-      <div class="panel panel-default">
+      <div class="panel panel-success">
         <div class="panel-heading">
           <h2 class="panel-title">Amount Funded</h2>
         </div>
         <div class="panel-body">
-          <h3 class="amount-funded">$<%= current_lendee.loan.amount_funded %></h3>
-          <p>(<%= current_lendee.loan.amount_funded / current_lendee.loan.amount %>% funded)</p>
+          <h3 class="amount-funded">$<%= @amount_funded %></h3>
+          <p>(<%= @amount_funded / @amount_requested %>% funded)</p>
         </div>
       </div>
 
@@ -30,13 +30,13 @@
           <h2 class="panel-title">Amount Remaining</h2>
         </div>
         <div class="panel-body">
-          <h3>$<%= current_lendee.loan.amount - current_lendee.loan.amount_funded %></h3>
+          <h3>$<%= @amount_requested - @amount_funded %></h3>
         </div>
       </div>
 
     </div>
     <div class="col-md-9">
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">
           <h2 class="panel-title">Investor Activity</h2>
         </div>
@@ -49,6 +49,7 @@
               </tr>
           <% end %>
         </table>
+        <%= link_to "View all investments", "#" %>
         </div>
       </div>
     </div>
