@@ -1,0 +1,7 @@
+<button class="btn btn-success"><%= link_to "Browse Notes", loans_path %></button>
+
+<% if current_lender %>
+  <button class="btn btn-primary"><%= link_to "Go to Your Portfolio", portfolio_path %></button>
+<% else %>
+  <button class="btn btn-primary"><%= link_to "Start Investing", new_lender_registration_path %></button>
+<% end %>

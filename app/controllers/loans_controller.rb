@@ -1,5 +1,8 @@
 class LoansController < ApplicationController
 
+  def index
+  end
+
   def show
     @loan = Loan.find_by(lendee_id: current_lendee.id)
   end
