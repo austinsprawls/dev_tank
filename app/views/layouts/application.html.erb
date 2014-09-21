@@ -3,11 +3,57 @@
 <head>
   <title>Devtank</title>
   <%= google_webfonts_link_tag :orbitron => 400 %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <div class="navbar navbar-default navbar-fixed-top nav-ancillary-top">
+    <div class="container">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">dev_tank</a>
+      <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav pull-right">
+          <% if current_lender %>
+          <li><%= link_to current_lender.email, portfolio_path%></li>
+          <% elsif current_lendee %>
+          <li><%= link_to current_lendee.first_name, profile_path %></li>
+          <% end %>
+
+          <li><%= link_to "Personal Loan", personal_loan_path  %></li>
+          <li><%= link_to "Invest", invest_path  %></li>
+          <li><%= link_to "How It Works", how_it_works_path  %></li>
+          <li><%= link_to "About", about_path  %></li>
+          <% if current_lender%>
+          <li><%= link_to "Sign Out", destroy_lender_session_path, method: :delete %></li>
+          <% elsif current_lendee%>
+          <li><%= link_to "Sign Out", destroy_lendee_session_path, method: :delete %></li>
+          <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <h3>Borrower Sign-In</h3>
+              <%= form_for resource, as: resource_name, url: session_path(resource_name), html: {class: "navbar-form pull-right"} do |f| -%>
+              <li><%= f.email_field :email, class: 'form-control', placeholder: 'email' %></li>
+              <li><%= f.password_field :password, class: 'form-control', placeholder: 'password' %></li>
+              <% if devise_mapping.rememberable? -%>
+                <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+              <% end -%>
+              <div><%= f.submit "Log in", class: 'btn btn-success' %></div><br />
+              <button class="btn btn-primary"><%= link_to "Investor Sign-In", new_lender_session_path %></button>
+              <% end -%>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 <%= render 'layouts/messages' %>
 <%= yield %>
