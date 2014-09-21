@@ -39,6 +39,9 @@ lendee = Lendee.create([
 lenders = Lender.create([
     {email: 'dcox@gmail.com',
     password: 'dc9082102',
+    state_of_residence: 'TX'},
+    {email: 'jbeuck@gmail.com',
+    password: 'password',
     state_of_residence: 'TX'}
 ])
 

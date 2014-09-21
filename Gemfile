@@ -47,3 +47,5 @@ gem "hirb"
 gem "pry-byebug"
 
 gem 'google-webfonts'
+
+gem 'better_errors'

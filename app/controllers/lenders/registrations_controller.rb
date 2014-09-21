@@ -1,2 +1,2 @@
-class Lenders::RegistrationsController < Devise::SessionsController
+class Lenders::RegistrationsController < Devise::RegistrationsController
 end

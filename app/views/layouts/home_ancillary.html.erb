@@ -54,7 +54,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav pull-right">
             <% if current_lender %>
-              <li><%= link_to current_lender.first_name, portfolio_path%></li>
+              <li><%= link_to current_lender.email, portfolio_path%></li>
             <% elsif current_lendee %>
               <li><%= link_to current_lendee.first_name, profile_path %></li>
             <% end %>
