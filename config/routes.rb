@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'personal-loan' => 'home#personal_loan'
   get 'how-it-works' => 'home#how_it_works'
   get 'about' => 'home#about'
-  post 'check_rate' => 'home#check_rate'
+  post 'check-rate' => 'home#check_rate'
 
   get 'profile' => 'lendees#show'
   get 'profile/edit' => 'lendees#edit'
@@ -15,8 +15,9 @@ Rails.application.routes.draw do
 
   get 'portfolio' => 'lenders#show'
 
-  resources :loans
-  post 'update-loan-results' => 'loans#update_loan_results'
+  resources :loans, except: [:index]
+  get 'browse-loans' => 'loans#index'
+  post 'browse-loans' => 'loans#update_loan_results'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

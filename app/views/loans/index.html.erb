@@ -3,9 +3,9 @@
 </style>
 <div class="container">
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-2">
     <h4>Filter Results</h4>
-    <%= form_tag '/update-loan-results', method: :post do -%>
+    <%= form_tag '/browse-loans', method: :post do -%>
       <h5>Term(36-60 month)</h5>
       <%= check_box_tag :term, 36 %>36-month<br/>
       <%= check_box_tag :term, 60 %>60-month<br/>
@@ -17,7 +17,7 @@
       <%= submit_tag 'Update Results', class: 'btn btn-default' %>
     <% end -%>
   </div>
-  <div class="col-md-9">
+  <div class="col-md-10">
     <table class="table table-striped">
       <tr>
         <th>Investment</th>
