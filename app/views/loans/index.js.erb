@@ -2,3 +2,22 @@
   render(partial: 'loans/list', locals: { loans: @loans })
 ) %>
 $("#filterrific_results").html("<%= js %>");
+
+
+$(document).ready(function(){
+  $('.add-investment').hide();
+
+  $('.input-investment').focus(function(){
+    console.log("clicked");
+    $('.add-investment', $(this).parent()).show();
+  });
+
+  $('tr').mouseenter(function(){
+    // var original_background = this.css("background-color");
+    $(this).css("background-color", "#428bca");
+  }).mouseleave(function(){
+    $(this).css("background-color", "#fff");
+  });
+
+
+});
