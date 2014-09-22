@@ -15,9 +15,11 @@ Rails.application.routes.draw do
 
   get 'portfolio' => 'lenders#show'
 
-  resources :loans, except: [:index]
+  resources :loans, except: [:index] do
+    get :reset_filterrific, on: :collection
+  end
   get 'browse-loans' => 'loans#index'
-  post 'browse-loans' => 'loans#update_loan_results'
+
 
   resources :investments
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,9 +11,20 @@ function scroll(){
   }
 }
 
-$('.add-investment').hide();
+$(document).ready(function(){
+  $('.add-investment').hide();
 
-$('.input-investment').click(function(){
-  console.log("clicked");
-  $('.add-investment').show();
+  $('.input-investment').focus(function(){
+    console.log("clicked");
+    $('.add-investment', $(this).parent()).show();
+  });
+
+  $('tr').mouseenter(function(){
+    // var original_background = this.css("background-color");
+    $(this).css("background-color", "#428bca");
+  }).mouseleave(function(){
+    $(this).css("background-color", "#fff");
+  });
+
+
 });

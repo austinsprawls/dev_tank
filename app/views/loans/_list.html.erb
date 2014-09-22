@@ -1,0 +1,35 @@
+<div id="filterrific_results">
+  <div class="col-md-10">
+
+    <table class="table table-striped">
+      <tr>
+        <th>Investment</th>
+        <th>Rate</th>
+        <th>Term</th>
+        <th>FICO</th>
+        <th>Amount</th>
+        <th>% Funded</th>
+        <th>Amount Left</th>
+        <th>Days Left</th>
+      </tr>
+      <% @loans.each do |loan| %>
+        <tr>
+          <%= form_for :investment, method: :post, url: investments_path do |f|%>
+          <td>
+            <%= f.number_field :amount, class: 'col-md-4 input-investment', placeholder: '$' %><br/><br>
+            <%= f.hidden_field :loan_id, class: 'col-md-4 input-investment', value: loan.id %>
+            <%= f.submit "Add", class: 'btn btn-success add-investment' %>
+          </td>
+          <td><%= loan.rate %></td>
+          <td><%= loan.term %></td>
+          <td><%= Lendee.find_by(loan.lendee_id).credit_range %></td>
+          <td>$<%= loan.amount %></td>
+          <td><%= loan.amount_funded/loan.amount %>%</td>
+          <td>$<%= loan.amount - loan.amount_funded %></td>
+          <td><%= (loan.expiration_date - Date.today).to_i %> days</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
