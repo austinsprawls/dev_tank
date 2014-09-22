@@ -10,3 +10,10 @@ function scroll(){
     $('.navbar-index').removeClass('nav-index-scroll');
   }
 }
+
+$('.add-investment').hide();
+
+$('.input-investment').click(function(){
+  console.log("clicked");
+  $('.add-investment').show();
+});

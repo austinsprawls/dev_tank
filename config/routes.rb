@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'portfolio' => 'lenders#show'
 
   resources :loans
+  post 'update-loan-results' => 'loans#update_loan_results'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

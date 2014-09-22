@@ -1,0 +1,53 @@
+<style>
+  body{padding-top: 70px;}
+</style>
+<div class="container">
+<div class="row">
+  <div class="col-md-3">
+    <h4>Filter Results</h4>
+    <%= form_tag '/update-loan-results', method: :post do -%>
+      <h5>Term(36-60 month)</h5>
+      <%= check_box_tag :term, 36 %>36-month<br/>
+      <%= check_box_tag :term, 60 %>60-month<br/>
+      <h5>Interest Rate</h5>
+      <%= check_box_tag :rate, '7.71%' %>7.71%<br/>
+      <%= check_box_tag :rate, '12.99%' %>12.99%<br/>
+      <%= check_box_tag :rate, '17.98%' %>17.98%<br/>
+      <%= check_box_tag :rate, '24.63%' %>24.63%<br/><br/>
+      <%= submit_tag 'Update Results', class: 'btn btn-default' %>
+    <% end -%>
+  </div>
+  <div class="col-md-9">
+    <table class="table table-striped">
+      <tr>
+        <th>Investment</th>
+        <th>Rate</th>
+        <th>Term</th>
+        <th>FICO</th>
+        <th>Amount</th>
+        <th>% Funded</th>
+        <th>Amount Left</th>
+        <th>Days Left</th>
+      </tr>
+      <% @all_loans.each do |loan| %>
+        <tr>
+          <%= form_for :investment, method: :post do |f|%>
+          <td>
+            <%= f.number_field :amount, class: 'col-md-4 input-investment', placeholder: '$' %><br/><br>
+            <%= f.hidden_field :loan_id, class: 'col-md-4 input-investment', value: loan.id %>
+            <%= f.submit "Add", class: 'btn btn-success add-investment' %>
+          </td>
+          <td><%= loan.rate %></td>
+          <td><%= loan.term %></td>
+          <td><%= Lendee.find_by(loan.lendee_id).credit_range %></td>
+          <td>$<%= loan.amount %></td>
+          <td><%= loan.amount_funded/loan.amount %>%</td>
+          <td>$<%= loan.amount - loan.amount_funded %></td>
+          <td><%= (loan.expiration_date - Date.today).to_i %> days</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+</div>
