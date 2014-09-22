@@ -141,49 +141,49 @@ loans = Loan.create([
   {lendee_id: lendee.first.id,
   amount: 7000,
   expiration_date: expiration,
-  rate: '7.71%',
+  rate: 7.71,
   term: 60
   },
   {lendee_id: lendee[1].id,
    amount: 10000,
    expiration_date: expiration,
-   rate: '17.98%',
+   rate: 17.98,
    term: 36
    },
    {lendee_id: lendee[2].id,
     amount: 14567,
     expiration_date: expiration,
-    rate: '7.71%',
+    rate: 7.71,
     term: 36
    },
    {lendee_id: lendee[3].id,
     amount: 11020,
     expiration_date: expiration,
-    rate: '24.63%',
+    rate: 24.63,
     term: 36
    },
    {lendee_id: lendee[4].id,
     amount: 10000,
     expiration_date: expiration,
-    rate: '7.71%',
+    rate: 7.71,
     term: 60
   },
   {lendee_id: lendee[5].id,
    amount: 9865,
    expiration_date: expiration,
-   rate: '12.99%',
+   rate: 12.99,
    term: 60
    },
    {lendee_id: lendee[6].id,
     amount: 10000,
     expiration_date: expiration,
-    rate: '17.98%',
+    rate: 17.98,
     term: 36
    },
    {lendee_id: lendee[7].id,
     amount: 13478,
     expiration_date: expiration,
-    rate: '7.71%',
+    rate: 7.71,
     term: 36
     }
 

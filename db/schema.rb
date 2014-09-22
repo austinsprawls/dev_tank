@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140917191901) do
     t.float    "amount"
     t.float    "amount_funded",   default: 0.0
     t.boolean  "funded?",         default: false
-    t.string   "rate"
+    t.float    "rate"
     t.integer  "term"
     t.date     "expiration_date"
     t.datetime "created_at"

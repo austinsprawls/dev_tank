@@ -12,7 +12,7 @@
       <% end %>
       <h5>Interest Rate</h5>
       <% @filterrific.select_options[:rate].each do |rate| %>
-        <%= check_box_tag "filterrific[rate][]", rate, class: 'filterrific-periodically-observed'%> <%= rate %><br />
+        <%= check_box_tag "filterrific[rate][]", rate, class: 'filterrific-periodically-observed'%> <%= rate %>%<br />
       <% end %>
 
 

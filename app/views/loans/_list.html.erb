@@ -1,6 +1,8 @@
 <div id="filterrific_results">
   <div class="col-md-10">
 
+    <%= will_paginate loans %>
+
     <table class="table table-striped">
       <tr>
         <th>Investment</th>
@@ -40,5 +42,7 @@
         </tr>
       <% end %>
     </table>
+
+    <%= will_paginate loans %>
   </div>
 </div>

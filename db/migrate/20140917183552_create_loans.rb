@@ -5,7 +5,7 @@ class CreateLoans < ActiveRecord::Migration
       t.float :amount
       t.float :amount_funded, default: 0
       t.boolean :funded?, default: false
-      t.string :rate
+      t.float :rate
       t.integer :term
       t.date :expiration_date
       t.timestamps
