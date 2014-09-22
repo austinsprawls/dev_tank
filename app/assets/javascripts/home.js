@@ -19,12 +19,17 @@ $(document).ready(function(){
     $('.add-investment', $(this).parent()).show();
   });
 
+  $('.estimate-returns').hide();
+
   $('tr').mouseenter(function(){
     // var original_background = this.css("background-color");
     $(this).css("background-color", "#428bca");
+    $('.estimate-returns', $(this)).show();
   }).mouseleave(function(){
     $(this).css("background-color", "#fff");
+    $('.estimate-returns', $(this)).hide();
   });
+
 
 
 });

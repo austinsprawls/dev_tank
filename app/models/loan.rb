@@ -6,7 +6,7 @@ class Loan < ActiveRecord::Base
   validates :lendee_id, :amount, :expiration_date, :rate, :term, presence: true
   validate :expiration_date_cannot_be_in_the_past
 
-  self.per_page = 15
+  self.per_page = 5
 
   def expiration_date_cannot_be_in_the_past
     if expiration_date.present? && expiration_date < Date.today

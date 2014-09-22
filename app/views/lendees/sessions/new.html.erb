@@ -1,4 +1,7 @@
-<h2>Log in</h2>
+<style>body{padding-top: 70px;}</style>
+
+<div class="container">
+<h2>Borrower Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div><%= f.label :email %><br />
@@ -15,3 +18,5 @@
 <% end %>
 
 <%= render "lendees/shared/links" %>
+
+</div>
