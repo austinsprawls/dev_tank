@@ -31,7 +31,7 @@
       </tr>
       <% @all_loans.each do |loan| %>
         <tr>
-          <%= form_for :investment, method: :post do |f|%>
+          <%= form_for :investment, method: :post, url: investments_path do |f|%>
           <td>
             <%= f.number_field :amount, class: 'col-md-4 input-investment', placeholder: '$' %><br/><br>
             <%= f.hidden_field :loan_id, class: 'col-md-4 input-investment', value: loan.id %>
