@@ -11,7 +11,7 @@ class InvestmentsController < ApplicationController
       Investment.create(lender_id: current_lender.id, loan_id: strong_params[:loan_id], amount: strong_params[:amount].to_f)
       loan = Loan.find(strong_params[:loan_id])
       loan.increment!(:amount_funded, strong_params[:amount].to_f)
-      loan.update_attributes(funded?: true) if loan.amount == loan.amount_funded
+      loan.update_attributes(funded?: true) if loan.amount >= loan.amount_funded
       flash[:success] = "You successfully invested $#{strong_params[:amount]} in loan ##{loan.created_at.to_i}"
     end
     redirect_to browse_loans_path

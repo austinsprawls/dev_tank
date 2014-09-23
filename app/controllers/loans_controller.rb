@@ -23,7 +23,7 @@ class LoansController < ApplicationController
       rate: Loan.options_for_rate_select,
       term: Loan.options_for_term_select
     }
-    @loans = Loan.filterrific_find(@filterrific).page(params[:page])
+    @loans = Loan.where(funded?: false).where("expiration_date > ?", Date.today).filterrific_find(@filterrific).page(params[:page])
 
     session[:filterrific_students] = @filterrific.to_hash
 

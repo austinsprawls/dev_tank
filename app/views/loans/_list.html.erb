@@ -41,13 +41,13 @@
           <td>
             <%= (loan.expiration_date - Date.today).to_i %> days<br/>
             <!-- Button trigger modal -->
-            <button class="btn btn-default estimate-returns" data-toggle="modal" data-target="#myModal">
+            <button class="btn btn-default estimate-returns" data-toggle="modal" data-target="#myModal-<%= loan.id %>">
               Estimate Returns
             </button>
           </td>
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal fade" id="myModal-<%= loan.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <section class="modal-header">
