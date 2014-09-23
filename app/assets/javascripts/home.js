@@ -30,6 +30,17 @@ $(document).ready(function(){
     $('.estimate-returns', $(this)).hide();
   });
 
+  $('.investment-input').keyup(function(){
+    console.log('input change');
+    var investment = $(this).val();
+    console.log("ivestment", investment)
+    var $rate = $(this).parent().parent().parent().parent().find('.rate').val();
+    console.log("rate", $rate);
+    var returns = (parseFloat(investment)*parseFloat($rate)/100.0).toFixed(2);
+    console.log("returns", returns)
+    $('.investment-estimate').text(returns);
+  });
+
 
 
 });
