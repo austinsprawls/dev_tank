@@ -34,4 +34,10 @@ $(document).ready(function(){
     $('.investment-estimate').text(returns);
   });
 
+  $("#myTable").tablesorter({
+    theme : 'blue',
+    // sort on the first column and second column in ascending order
+    sortList: [[5,1]]
+  });
+
 });

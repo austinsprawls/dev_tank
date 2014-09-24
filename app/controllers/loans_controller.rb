@@ -5,18 +5,6 @@ include ActionView::Helpers::NumberHelper
 class LoansController < ApplicationController
 
   def index
-    # if updated_loan_params['rate'] && updated_loan_params['term']
-    #   @all_loans = Loan.where(funded?: false, rate: updated_loan_params['rate'], term: updated_loan_params['term'])
-    #   .where("expiration_date > ?", Date.today)
-    # elsif updated_loan_params['rate']
-    #   @all_loans = Loan.where(funded?: false, rate: updated_loan_params['rate'])
-    #   .where("expiration_date > ?", Date.today)
-    # elsif updated_loan_params['term']
-    #   @all_loans = Loan.where(funded?: false, term: updated_loan_params['term'])
-    #   .where("expiration_date > ?", Date.today)
-    # else
-    #   @all_loans = Loan.where(funded?: false).where("expiration_date > ?", Date.today)
-    # end
     @filterrific = Filterrific.new(Loan, params[:filterrific] || session[:filterrific_loans])
     @filterrific.select_options = {
       # sorted_by: Loan.options_for_sorted_by,

@@ -55,3 +55,5 @@ gem 'binding_of_caller'
 gem 'filterrific'
 
 gem 'will_paginate', '~> 3.0'
+
+gem 'jquery-tablesorter'

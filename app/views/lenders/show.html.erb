@@ -58,11 +58,13 @@
             <tr>
               <td>Date</td>
               <td>Amount</td>
+              <td>Rate</td>
             </tr>
           <% @lender_investments.each do |investment| %>
               <tr>
                 <td><%= investment.created_at.strftime('%d %b') %></td>
                 <td>+ $<%= investment.amount %></td>
+                <td><%= Loan.find(investment.loan_id).rate %>%</td>
               </tr>
           <% end %>
         </table>

@@ -3,17 +3,20 @@
 
     <%= will_paginate loans %>
 
-    <table class="table table-striped">
-      <tr>
-        <th>Investment</th>
-        <th>Rate</th>
-        <th>Term</th>
-        <th>FICO</th>
-        <th>Amount</th>
-        <th>% Funded</th>
-        <th>Amount Left</th>
-        <th>Days Left</th>
-      </tr>
+    <table id="myTable"class="table table-striped tablesorter">
+      <thead>
+        <tr>
+          <th>Investment</th>
+          <th>Rate</th>
+          <th>Term</th>
+          <th>FICO</th>
+          <th>Amount</th>
+          <th>% Funded</th>
+          <th>Amount Left</th>
+          <th>Days Left</th>
+        </tr>
+      </thead>
+      <tbody>
       <% loans.each do |loan| %>
         <tr class="loan-table-row">
           <%= form_for :investment, method: :post, url: investments_path do |f|%>
@@ -25,7 +28,7 @@
           <% end %>
           <td><%= loan.rate %>%</td>
           <td><%= loan.term %></td>
-          <td><%= Lendee.find_by(loan.lendee_id).credit_range %></td>
+          <td><%= Lendee.find(loan.lendee_id).credit_range %></td>
           <td>$<%= "%.2f" % loan.amount %></td>
           <td>
 
@@ -76,6 +79,7 @@
           </div>
         </tr>
       <% end %>
+    </tbody>
     </table>
 
     <%= will_paginate loans %>
