@@ -9,8 +9,10 @@ class InvestmentsController < ApplicationController
       flash[:alert] = "You must enter an amount to invest"
     else
       Investment.create(lender_id: current_lender.id, loan_id: strong_params[:loan_id], amount: strong_params[:amount].to_f)
+      current_lender.increment!(:total_invested, strong_params[:amount].to_f)
       loan = Loan.find(strong_params[:loan_id])
       loan.increment!(:amount_funded, strong_params[:amount].to_f)
+      loan.decrement!(:amount, strong_params[:amount])
       loan.update_attributes(funded?: true) if loan.amount >= loan.amount_funded
       flash[:success] = "You successfully invested $#{strong_params[:amount]} in loan ##{loan.created_at.to_i}"
     end

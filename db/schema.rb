@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917191901) do
+ActiveRecord::Schema.define(version: 20140924140227) do
 
   create_table "investments", force: true do |t|
     t.integer  "lender_id"
@@ -77,6 +77,14 @@ ActiveRecord::Schema.define(version: 20140917191901) do
     t.float    "rate"
     t.integer  "term"
     t.date     "expiration_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.integer  "lender_id"
+    t.integer  "lendee_id"
+    t.float    "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

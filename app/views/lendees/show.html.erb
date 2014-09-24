@@ -21,7 +21,7 @@
         </div>
         <div class="panel-body">
           <h3 class="amount-funded">$<%= @amount_funded %></h3>
-          <p>(<%= @amount_funded / @amount_requested %>% funded)</p>
+          <p>(<%= (@amount_funded / @amount_requested *100).round(2) %>% funded)</p>
         </div>
       </div>
 
@@ -42,6 +42,10 @@
         </div>
         <div class="panel-body">
           <table class="table table-striped">
+            <tr>
+              <td>Date</td>
+              <td>Amount</td>
+            </tr>
           <% @investments.each do |investment| %>
               <tr>
                 <td><%= investment.created_at.strftime('%d %b') %></td>
