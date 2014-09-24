@@ -28,21 +28,21 @@
           <% end %>
           <td><%= loan.rate %>%</td>
           <td><%= loan.term %></td>
-          <td><%= Lendee.find(loan.lendee_id).credit_range %></td>
+          <td><%= credit_range(loan) %></td>
           <td>$<%= "%.2f" % loan.amount %></td>
           <td>
 
             <div class="progress">
               <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow= "<%= loan.amount_funded %>" aria-valuemin="0" aria-valuemax="<%= loan.amount %>" style="width: <%= (loan.amount_funded/loan.amount)*100 %>%">
-                <%= (loan.amount_funded/loan.amount).round(2)*100 %>%
+                <%= percent_funded(loan) %>%
               </div>
             </div>
 
 
           </td>
-          <td>$<%= "%.2f" % (loan.amount - loan.amount_funded) %></td>
+          <td>$<%= amount_remaining(loan) %></td>
           <td>
-            <%= (loan.expiration_date - Date.today).to_i %> days<br/>
+            <%= days_remaining(loan) %> days<br/>
             <!-- Button trigger modal -->
             <button class="btn btn-default estimate-returns" data-toggle="modal" data-target="#myModal-<%= loan.id %>">
               Estimate Returns

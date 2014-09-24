@@ -21,7 +21,7 @@
         </div>
         <div class="panel-body">
           <h3 class="amount-funded">$<%= @amount_funded %></h3>
-          <p>(<%= (@amount_funded / @amount_requested *100).round(2) %>% funded)</p>
+          <p>(<%= percent_funded(@amount_funded, @amount_requested) %>% funded)</p>
         </div>
       </div>
 
@@ -30,7 +30,7 @@
           <h2 class="panel-title">Amount Remaining</h2>
         </div>
         <div class="panel-body">
-          <h3>$<%= @amount_requested - @amount_funded %></h3>
+          <h3>$<%= amount_remaining(@amount_requested, @amount_funded) %></h3>
         </div>
       </div>
 
@@ -58,5 +58,8 @@
       </div>
     </div>
   </div>
+  <% else %>
+    <h2>You haven't applied for a loan yet</h2>
+    <%= link_to "Apply for Loan", new_loan_path %>
   <% end %>
 </div>
