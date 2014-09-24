@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :lendees, controllers: {sessions: 'lendees/sessions', registrations: 'lendees/registrations'}
-  devise_for :lenders, controllers: {sessions: 'lenders/sessions', registrations: 'lenders/regsistrations'}
+  devise_for :lenders, controllers: {sessions: 'lenders/sessions', registrations: 'lenders/registrations'}
 
   root 'home#index'
   get 'invest' => 'home#invest'

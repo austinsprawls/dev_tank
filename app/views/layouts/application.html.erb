@@ -45,8 +45,8 @@
                 <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
               <% end -%>
               <div><%= f.submit "Log in", class: 'btn btn-success' %></div><br />
-              <button class="btn btn-primary"><%= link_to "Investor Sign-In", new_lender_session_path %></button>
               <% end -%>
+              <%= link_to "Investor Sign-In", new_lender_session_path, class: 'btn btn-primary' %>
             </ul>
           </li>
           <% end %>

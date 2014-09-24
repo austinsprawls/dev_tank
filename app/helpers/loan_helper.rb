@@ -3,7 +3,7 @@ module LoanHelper
     Lendee.find(loan.lendee_id).credit_range
   end
 
-  def percent_funded(loan)
+  def loan_percent_funded(loan)
     (loan.amount_funded/loan.amount).round(2)*100
   end
 

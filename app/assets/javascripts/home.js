@@ -16,6 +16,8 @@ $(document).ready(function(){
 
   $('.input-investment').focus(function(){
     console.log("clicked");
+    var defaultValue = $('.default-portfolio-input').val();
+    $(this).val(defaultValue);
     $('.add-investment', $(this).parent()).show();
   });
 
