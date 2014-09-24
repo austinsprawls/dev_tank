@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20140924140227) do
     t.integer  "lender_id"
     t.integer  "loan_id"
     t.float    "amount"
+    t.float    "expected_return"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20140924140227) do
     t.datetime "updated_at"
     t.string   "state_of_residence"
     t.float    "funds",                  default: 0.0
+    t.float    "total_invested",         default: 0.0
   end
 
   add_index "lenders", ["email"], name: "index_lenders_on_email", unique: true

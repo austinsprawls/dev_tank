@@ -189,11 +189,11 @@ loans = Loan.create([
 
 ])
 
-investments = Investment.create([
-  {lender_id: lenders.first.id,
-  loan_id: loans.first.id,
-  amount: 2000},
-  {lender_id: lenders.first.id,
-  loan_id: loans.first.id,
-  amount: 5000}
-])
+# investments = Investment.create([
+#   {lender_id: lenders.first.id,
+#   loan_id: loans.first.id,
+#   amount: 2000},
+#   {lender_id: lenders.first.id,
+#   loan_id: loans.first.id,
+#   amount: 5000}
+# ])

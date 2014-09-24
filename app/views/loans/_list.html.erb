@@ -15,7 +15,7 @@
         <th>Days Left</th>
       </tr>
       <% loans.each do |loan| %>
-        <tr>
+        <tr class="loan-table-row">
           <%= form_for :investment, method: :post, url: investments_path do |f|%>
           <td>
             <%= f.number_field :amount, class: 'input-investment form-control', placeholder: '$' %><br/><br>

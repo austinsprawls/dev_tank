@@ -7,7 +7,7 @@
 <%= render 'shared/navbar' %>
 
 <div class="profile-panel">
-  <h1>Hi There, <%= @lender.first_name %>!</h1>
+  <h1>Hi There, <%= @lender.email %>!</h1>
 </div>
 
 <div class="container">
@@ -19,7 +19,9 @@
           <h2 class="panel-title">Total Invested</h2>
         </div>
         <div class="panel-body">
+          <% if @total_invested > 0 %>
           <h3 class="total-invested">$<%= @total_invested %></h3>
+          <% end %>
         </div>
       </div>
 
@@ -28,7 +30,20 @@
           <h2 class="panel-title">Total Returns</h2>
         </div>
         <div class="panel-body">
-          <h3>$<%= @amount_requested - @amount_funded %></h3>
+          <% if @total_returns %>
+          <h3>$<%= @total_returns %></h3>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Expected Returns</h2>
+        </div>
+        <div class="panel-body">
+          <% if @expected_returns%>
+          <h3>$<%= @expected_returns.round(2) %></h3>
+          <% end %>
         </div>
       </div>
 
@@ -36,7 +51,7 @@
     <div class="col-md-9">
       <div class="panel panel-info">
         <div class="panel-heading">
-          <h2 class="panel-title">Investor Activity</h2>
+          <h2 class="panel-title">Investment Activity</h2>
         </div>
         <div class="panel-body">
           <table class="table table-striped">
@@ -44,7 +59,7 @@
               <td>Date</td>
               <td>Amount</td>
             </tr>
-          <% @investments.each do |investment| %>
+          <% @lender_investments.each do |investment| %>
               <tr>
                 <td><%= investment.created_at.strftime('%d %b') %></td>
                 <td>+ $<%= investment.amount %></td>

@@ -21,7 +21,7 @@ $(document).ready(function(){
 
   $('.estimate-returns').hide();
 
-  $('tr').mouseenter(function(){
+  $('.loan-table-row').mouseenter(function(){
     // var original_background = this.css("background-color");
     $(this).css("background-color", "#428bca");
     $('.estimate-returns', $(this)).show();
