@@ -8,6 +8,18 @@ class InvestmentsController < ApplicationController
     redirect_to browse_loans_path
   end
 
+  def index
+    if current_lendee
+      @investments = Investment.where(loan_id: current_lendee.loan.id)
+    elsif current_lender
+      @investments = Investment.where(lender_id: current_lender.id)
+    end
+  end
+
+  def show
+    @investment = Investment.find(params[:id])
+  end
+
   def strong_params
     params.require(:investment).permit(:amount, :loan_id)
   end

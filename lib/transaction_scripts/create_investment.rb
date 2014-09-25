@@ -13,7 +13,7 @@
         flash[:alert] = "You must be signed in to invest"
       elsif amount.blank?
         flash[:alert] = "You must enter an amount to invest"
-      elsif amount.to_f < 0
+      elsif amount.to_f <= 0
         flash[:alert] = "Investment must be a positive number"
       else
         loan = Loan.find(loan_id)

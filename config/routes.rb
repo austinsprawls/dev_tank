@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :lendees, controllers: {sessions: 'lendees/sessions', registrations: 'lendees/registrations'}
   devise_for :lenders, controllers: {sessions: 'lenders/sessions', registrations: 'lenders/registrations'}
 
+  #HOME routes
   root 'home#index'
   get 'invest' => 'home#invest'
   get 'personal-loan' => 'home#personal_loan'
@@ -9,26 +10,31 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
   post 'check-rate' => 'home#check_rate'
 
+  #LENDEE routes
   get 'profile' => 'lendees#show_profile'
   get 'profile/:id' => 'lendees#show'
   resources :lendees, only: [:edit, :update] do
     resources :payments, only: [:show, :index]
+    resources :investments, only: [:show, :index]
   end
   # get 'profile/:id/edit' => 'lendees#edit'
   # put 'profile/:id/edit' => 'lendees#update'
 
+  #LENDER routes
   get 'portfolio' => 'lenders#show'
   resources :lenders, only: [:edit, :update] do
     resources :payments, only: [:show, :index]
+    resources :investments, only: [:show, :index]
   end
 
+  #LOAN routes
   resources :loans, except: [:index] do
     get :reset_filterrific, on: :collection
   end
   get 'browse-loans' => 'loans#index'
 
-
-  resources :investments
+  #INVESTMENT routes
+  resources :investments, only: [:create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

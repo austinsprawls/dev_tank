@@ -56,29 +56,53 @@
       </div>
 
     </div>
-    <div class="col-md-9">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h2 class="panel-title">Investment Activity</h2>
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped">
-            <tr>
-              <td>Date</td>
-              <td>Amount</td>
-              <td>Rate</td>
-            </tr>
-          <% @lender_investments.each do |investment| %>
+      <div class="col-md-9">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2 class="panel-title">Investment Activity</h2>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped">
               <tr>
-                <td><%= investment.created_at.strftime('%d %b') %></td>
-                <td>+ $<%= investment.amount %></td>
-                <td><%= Loan.find(investment.loan_id).rate %>%</td>
+                <td>Date</td>
+                <td>Amount</td>
+                <td>Rate</td>
               </tr>
-          <% end %>
-        </table>
-        <%= link_to "View all investments", "#" %>
+              <% @lender_investments.each do |investment| %>
+                <tr>
+                  <td><%= investment.created_at.strftime('%d %b') %></td>
+                  <td class="minus">- $<%= investment.amount %></td>
+                  <td><%= Loan.find(investment.loan_id).rate %>%</td>
+                </tr>
+              <% end %>
+            </table>
+            <%= link_to "View all investments", lender_investments_path(@lender.id) %>
+          </div>
         </div>
-      </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2 class="panel-title">Payment Activity</h2>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped">
+              <tr>
+                <td>Date</td>
+                <td>Amount</td>
+                <td>Loan ID</td>
+              </tr>
+              <% @lender_payments.each do |payment| %>
+                <tr>
+                  <td><%= payment.created_at.strftime('%d %b') %></td>
+                  <td class="plus">+ $<%= payment.amount %></td>
+                  <td><%= Loan.find_by(lendee_id: payment.lendee_id).created_at.strftime('%d %b') %></td>
+                </tr>
+              <% end %>
+            </table>
+            <%= link_to "View all payments", lender_payments_path(@lender.id) %>
+          </div>
+        </div>
+
     </div>
   </div>
 </div>

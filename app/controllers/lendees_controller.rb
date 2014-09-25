@@ -7,6 +7,7 @@ class LendeesController < ApplicationController
     @investments = Investment.where(loan_id: @loan.id).limit(7)
     @amount_funded = @loan.amount_funded
     @amount_requested = @loan.amount
+    @payments = Payment.where(lendee_id: @lendee.id)
   end
 
   def show
@@ -15,6 +16,7 @@ class LendeesController < ApplicationController
     @investments = Investment.where(loan_id: @loan.id).limit(7)
     @amount_funded = @loan.amount_funded
     @amount_requested = @loan.amount
+    @payments = Payment.where(lendee_id: @lendee.id)
   end
 
   def edit

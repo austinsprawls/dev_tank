@@ -47,29 +47,56 @@
       </div>
 
     </div>
-    <div class="col-md-9">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h2 class="panel-title">Investor Activity</h2>
-        </div>
-        <div class="panel-body">
-          <table class="table table-striped">
-            <tr>
-              <td>Date</td>
-              <td>Amount</td>
-            </tr>
-          <% @investments.each do |investment| %>
+
+    <% if !@lendee.loan.funded? %>
+      <div class="col-md-9">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2 class="panel-title">Investor Activity</h2>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped">
               <tr>
-                <td><%= investment.created_at.strftime('%d %b') %></td>
-                <td>+ $<%= investment.amount %></td>
+                <td>Date</td>
+                <td>Amount</td>
               </tr>
-          <% end %>
-        </table>
-        <%= link_to "View all investments", "#" %>
+            <% @investments.each do |investment| %>
+                <tr>
+                  <td><%= investment.created_at.strftime('%d %b') %></td>
+                  <td class="plus">+ $<%= investment.amount %></td>
+                </tr>
+            <% end %>
+          </table>
+          <%= link_to "View all investments", "#" %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    <% else %>
+      <div class="col-md-9">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2 class="panel-title">Your Payments</h2>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped">
+              <tr>
+                <td>Date</td>
+                <td>Amount</td>
+              </tr>
+            <% @payments.each do |payment| %>
+                <tr>
+                  <td><%= payment.created_at.strftime('%d %b') %></td>
+                  <td class="minus" />
+                </tr>
+            <% end %>
+          </table>
+          <%= link_to "View all payments", lendee_payments_path(@lendee.id) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
   <% else %>
     <h2>You haven't applied for a loan yet</h2>
     <%= link_to "Apply for Loan", new_loan_path %>
