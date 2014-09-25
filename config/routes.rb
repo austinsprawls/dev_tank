@@ -11,11 +11,16 @@ Rails.application.routes.draw do
 
   get 'profile' => 'lendees#show_profile'
   get 'profile/:id' => 'lendees#show'
-  resources :lendees, only: [:edit, :update]
+  resources :lendees, only: [:edit, :update] do
+    resources :payments, only: [:show, :index]
+  end
   # get 'profile/:id/edit' => 'lendees#edit'
   # put 'profile/:id/edit' => 'lendees#update'
 
   get 'portfolio' => 'lenders#show'
+  resources :lenders, only: [:edit, :update] do
+    resources :payments, only: [:show, :index]
+  end
 
   resources :loans, except: [:index] do
     get :reset_filterrific, on: :collection
