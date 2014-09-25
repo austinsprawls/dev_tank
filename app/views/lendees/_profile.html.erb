@@ -10,6 +10,22 @@
   <div class="row">
     <div class="col-md-3">
 
+      <% if !params[:id] %>
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h2 class="panel-title">Personal Info</h2>
+          </div>
+          <div class="panel-body">
+            <p><strong>Name:</strong> <%= @lendee.first_name %> <%= @lendee.last_name %></p>
+            <p><strong>Email:</strong> <%= @lendee.email %></p>
+            <p><strong>Address:</strong> <%= @lendee.street_address %>, <%= @lendee.state %></p>
+            <p><strong>Birthday:</strong> <%= @lendee.date_of_birth %></p>
+            <p><strong>Annual Income:</strong> $<%= @lendee.yearly_individual_income %></p>
+            <p><strong>Credit Range:</strong> <%= @lendee.credit_range %></p>
+          </div>
+        </div>
+      <% end %>
+
       <div class="panel panel-success">
         <div class="panel-heading">
           <h2 class="panel-title">Amount Funded</h2>
