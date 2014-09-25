@@ -1,5 +1,5 @@
 class LendeesController < ApplicationController
-  before_action :authenticate_lendee!, only: [:show_profile]
+  before_action :authenticate_lendee!, only: [:show_profile, :edit, :update]
 
   def show_profile
     @lendee = current_lendee
@@ -18,6 +18,7 @@ class LendeesController < ApplicationController
   end
 
   def edit
+    @lendee = current_lendee
   end
 
   def update

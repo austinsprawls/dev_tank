@@ -22,6 +22,7 @@
             <p><strong>Birthday:</strong> <%= @lendee.date_of_birth %></p>
             <p><strong>Annual Income:</strong> $<%= @lendee.yearly_individual_income %></p>
             <p><strong>Credit Range:</strong> <%= @lendee.credit_range %></p>
+            <%= link_to "Edit Info", edit_lendee_path(@lendee.id) %>
           </div>
         </div>
       <% end %>

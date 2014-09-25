@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   get 'profile' => 'lendees#show_profile'
   get 'profile/:id' => 'lendees#show'
-  get 'profile/edit' => 'lendees#edit'
-  put 'profile/edit' => 'lendees#update'
+  resources :lendees, only: [:edit, :update]
+  # get 'profile/:id/edit' => 'lendees#edit'
+  # put 'profile/:id/edit' => 'lendees#update'
 
   get 'portfolio' => 'lenders#show'
 
