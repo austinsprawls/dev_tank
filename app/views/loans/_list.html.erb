@@ -21,7 +21,7 @@
         <tr class="loan-table-row">
           <%= form_for :investment, method: :post, url: investments_path do |f|%>
           <td>
-            <%= f.number_field :amount, class: 'input-investment form-control', placeholder: '$' %><br/><br>
+            <%= f.text_field :amount, class: 'input-investment form-control', placeholder: '$' %><br/><br>
             <%= f.hidden_field :loan_id, class: 'input-investment', value: loan.id %>
             <%= f.submit "Add", class: 'btn btn-success add-investment' %>
           </td>

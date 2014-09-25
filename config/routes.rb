@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'about' => 'home#about'
   post 'check-rate' => 'home#check_rate'
 
-  get 'profile' => 'lendees#show'
+  get 'profile' => 'lendees#show_profile'
+  get 'profile/:id' => 'lendees#show'
   get 'profile/edit' => 'lendees#edit'
   put 'profile/edit' => 'lendees#update'
 

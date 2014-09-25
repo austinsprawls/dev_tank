@@ -37,6 +37,8 @@ class LoansController < ApplicationController
 
   def create
     rate = get_rate current_lendee.credit_range
+    # TODO: write transaction script for CreateLoan
+    # CreateLoan.run(loan_params.merge!(rate: rate, lendee_id: current_lendee.id, flash: flash))
     if Loan.create(loan_params.merge(rate: rate, lendee_id: current_lendee.id))
       flash[:success] = "Your loan was created successfully"
       redirect_to profile_path
