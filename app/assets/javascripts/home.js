@@ -43,10 +43,16 @@ $(document).ready(function(){
     $('.investment-estimate').text(returns);
   });
 
-  $("#myTable").tablesorter({
+  $("#loansTable").tablesorter({
     theme : 'blue',
     // sort on the first column and second column in ascending order
     sortList: [[5,1]]
+  });
+
+  $("#lenderTable").tablesorter({
+    theme : 'blue',
+    // sort on the first column and second column in ascending order
+    sortList: [[0,1]]
   });
 
 });
