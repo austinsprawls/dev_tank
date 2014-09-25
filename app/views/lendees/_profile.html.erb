@@ -1,0 +1,60 @@
+<style>
+  .amount-funded{
+    color: green;
+  }
+</style>
+
+
+<div class="container">
+  <% if @loan %>
+  <div class="row">
+    <div class="col-md-3">
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h2 class="panel-title">Amount Funded</h2>
+        </div>
+        <div class="panel-body">
+          <h3 class="amount-funded">$<%= @amount_funded %></h3>
+          <p>(<%= (@amount_funded/@amount_requested*100).round(2) %>% funded)</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h2 class="panel-title">Amount Remaining</h2>
+        </div>
+        <div class="panel-body">
+          <h3>$<%= remaining(@amount_requested, @amount_funded) %></h3>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-9">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h2 class="panel-title">Investor Activity</h2>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <tr>
+              <td>Date</td>
+              <td>Amount</td>
+            </tr>
+          <% @investments.each do |investment| %>
+              <tr>
+                <td><%= investment.created_at.strftime('%d %b') %></td>
+                <td>+ $<%= investment.amount %></td>
+              </tr>
+          <% end %>
+        </table>
+        <%= link_to "View all investments", "#" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% else %>
+    <h2>You haven't applied for a loan yet</h2>
+    <%= link_to "Apply for Loan", new_loan_path %>
+  <% end %>
+</div>

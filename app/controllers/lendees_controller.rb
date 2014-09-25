@@ -3,15 +3,15 @@ class LendeesController < ApplicationController
 
   def show_profile
     @lendee = current_lendee
-    @loan = current_lendee.loan
+    @loan = @lendee.loan
     @investments = Investment.where(loan_id: @loan.id).limit(7)
     @amount_funded = @loan.amount_funded
     @amount_requested = @loan.amount
   end
 
   def show
-    @lendee = current_lendee
-    @loan = current_lendee.loan
+    @lendee = Lendee.find(params[:id])
+    @loan = @lendee.loan
     @investments = Investment.where(loan_id: @loan.id).limit(7)
     @amount_funded = @loan.amount_funded
     @amount_requested = @loan.amount
