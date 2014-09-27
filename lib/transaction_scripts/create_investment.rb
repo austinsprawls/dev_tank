@@ -13,8 +13,8 @@
         flash[:alert] = "You must be signed in to invest"
       elsif amount.blank?
         flash[:alert] = "You must enter an amount to invest"
-      elsif amount.to_f <= 0
-        flash[:alert] = "Investment must be a positive number"
+      elsif amount.to_f < 25
+        flash[:alert] = "Investment must be at least $25"
       else
         loan = Loan.find(loan_id)
         expected_return = (loan.rate/100) * amount.to_f
@@ -22,7 +22,10 @@
         current_lender.increment!(:total_invested, amount.to_f)
         loan.increment!(:amount_funded, amount.to_f)
         loan.decrement!(:amount, amount.to_f)
-        loan.update_attributes(funded?: true) if loan.amount <= loan.amount_funded
+        loan.update_attributes(funded?: true) if loan.amount_funded >= loan.amount
+        if loan.funded?
+          CreatePayment.run(current_lendee: current_lendee)
+        end
         flash[:success] = "You successfully invested $#{amount} in loan ##{loan.created_at.to_i}"
       end
     end

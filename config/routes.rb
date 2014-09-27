@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'profile' => 'lendees#show_profile'
   get 'profile/:id' => 'lendees#show'
   resources :lendees, only: [:edit, :update] do
-    resources :payments, only: [:show, :index]
+    resources :payments, only: [:show, :index, :edit, :update]
     resources :investments, only: [:show, :index]
   end
   # get 'profile/:id/edit' => 'lendees#edit'
