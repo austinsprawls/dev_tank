@@ -1,4 +1,4 @@
-require 'transaction_scripts/create_payment'
+require 'transaction_scripts/create_payments'
 
 class CreateInvestment
   def self.run(strong_params)
@@ -7,6 +7,7 @@ class CreateInvestment
     current_lender = strong_params[:current_lender]
     amount = strong_params[:amount]
     loan_id = strong_params[:loan_id]
+    loan = Loan.find(loan_id)
 
     if current_lendee
       flash[:alert] = "You must be registered as an investor to invest"
@@ -16,8 +17,9 @@ class CreateInvestment
       flash[:alert] = "You must enter an amount to invest"
     elsif amount.to_f < 25
       flash[:alert] = "Investment must be at least $25"
+    elsif amount.to_f > loan.amount_remaining
+      flash[:alert] = "You can't invest more than the amount remaining on the loan"
     else
-      loan = Loan.find(loan_id)
       expected_return = (loan.rate/100) * amount.to_f
       Investment.create(lender_id: current_lender.id, loan_id: loan_id, amount: amount.to_f, expected_return: expected_return)
       current_lender.increment!(:total_invested, amount.to_f)
@@ -25,7 +27,7 @@ class CreateInvestment
       loan.decrement!(:amount_remaining, amount.to_f)
       loan.update_attributes(funded?: true) if loan.amount_funded >= loan.amount_requested
       if loan.funded?
-        CreatePayment.run(loan: loan)
+        CreatePayments.run(loan: loan)
       end
       flash[:success] = "You successfully invested $#{amount} in loan ##{loan.created_at.to_i}"
     end

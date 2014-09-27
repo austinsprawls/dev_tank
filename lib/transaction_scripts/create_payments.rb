@@ -1,4 +1,4 @@
-class CreatePayment
+class CreatePayments
   def self.run(strong_params)
     loan = strong_params[:loan]
     lendee = Lendee.find(loan.lendee_id)
