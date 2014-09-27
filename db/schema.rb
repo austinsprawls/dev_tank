@@ -87,6 +87,9 @@ ActiveRecord::Schema.define(version: 20140924140227) do
     t.integer  "lender_id"
     t.integer  "lendee_id"
     t.float    "amount"
+    t.float    "amount_paid", default: 0.0
+    t.boolean  "paid?",       default: false
+    t.date     "due_date",    default: '2014-10-27'
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -42,7 +42,7 @@
           <h2 class="panel-title">Amount Remaining</h2>
         </div>
         <div class="panel-body">
-          <h3>$<%= remaining(@amount_requested, @amount_funded) %></h3>
+          <h3>$<%= @loan.amount %></h3>
         </div>
       </div>
 
@@ -81,13 +81,17 @@
           <div class="panel-body">
             <table class="table table-striped">
               <tr>
-                <td>Date</td>
-                <td>Amount</td>
+                <td>Date Added</td>
+                <td>Total Amount</td>
+                <td>Total Paid</td>
+                <td>Due Date</td>
               </tr>
             <% @payments.each do |payment| %>
                 <tr>
                   <td><%= payment.created_at.strftime('%d %b') %></td>
-                  <td class="minus" />
+                  <td>$<%= payment.amount.round(2) %></td>
+                  <td class="minus">$<%= payment.amount_paid.round(2) %></td>
+                  <td><%= payment.due_date.strftime('%d %b') %></td>
                 </tr>
             <% end %>
           </table>

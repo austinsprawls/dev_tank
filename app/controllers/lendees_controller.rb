@@ -7,7 +7,7 @@ class LendeesController < ApplicationController
     unpaid_payment_count = 0
     unpaid_payment = false
     @payments.each do |payment|
-      if !payment.funded?
+      if !payment.paid?
         unpaid_payment_count += 1
       end
     end

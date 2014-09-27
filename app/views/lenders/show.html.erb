@@ -74,7 +74,7 @@
               <% @lender_investments.each do |investment| %>
                 <tr>
                   <td><%= investment.created_at.strftime('%d %b') %></td>
-                  <td class="minus"><%= investment.amount %></td>
+                  <td class="minus">- $<%= investment.amount %></td>
                   <td><%= Loan.find(investment.loan_id).rate %>%</td>
                 </tr>
               <% end %>
@@ -96,11 +96,13 @@
                 <td>Loan ID</td>
               </tr>
               <% @lender_payments.each do |payment| %>
-                <tr>
-                  <td><%= payment.created_at.strftime('%d %b') %></td>
-                  <td class="plus">+ $<%= payment.amount %></td>
-                  <td><%= Loan.find_by(lendee_id: payment.lendee_id).created_at.strftime('%d %b') %></td>
-                </tr>
+                <% if payment.paid? %>
+                  <tr>
+                    <td><%= payment.created_at.strftime('%d %b') %></td>
+                    <td class="plus">+ $<%= payment.amount %></td>
+                    <td><%= Loan.find_by(lendee_id: payment.lendee_id).created_at.strftime('%d %b') %></td>
+                  </tr>
+                <% end %>
               <% end %>
             </table>
             <%= link_to "View all payments", lender_payments_path(@lender.id) %>
