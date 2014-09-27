@@ -3,7 +3,7 @@ class Loan < ActiveRecord::Base
   has_many :investments
   has_many :lenders, through: :investments
 
-  validates :lendee_id, :amount, :expiration_date, :rate, :term, presence: true
+  validates :lendee_id, :amount_requested, :expiration_date, :rate, :term, presence: true
   validate :expiration_date_cannot_be_in_the_past
 
   self.per_page = 5

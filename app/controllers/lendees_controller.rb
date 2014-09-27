@@ -11,11 +11,14 @@ class LendeesController < ApplicationController
         unpaid_payment_count += 1
       end
     end
+    unpaid_payment = true if unpaid_payment_count > 0
     flash[:alert] = "You have #{unpaid_payment_count} unpaid payments" if unpaid_payment
     @loan = @lendee.loan
-    @investments = Investment.where(loan_id: @loan.id).limit(7)
-    @amount_funded = @loan.amount_funded
-    @amount_requested = @loan.amount
+    if @loan
+      @investments = Investment.where(loan_id: @loan.id).limit(7)
+      @amount_funded = @loan.amount_funded
+      @amount_requested = @loan.amount_requested
+    end
   end
 
   def show
@@ -23,7 +26,7 @@ class LendeesController < ApplicationController
     @loan = @lendee.loan
     @investments = Investment.where(loan_id: @loan.id).limit(7)
     @amount_funded = @loan.amount_funded
-    @amount_requested = @loan.amount
+    @amount_requested = @loan.amount_requested
     @payments = Payment.where(lendee_id: @lendee.id)
   end
 

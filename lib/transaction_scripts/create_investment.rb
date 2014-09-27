@@ -22,8 +22,8 @@ class CreateInvestment
       Investment.create(lender_id: current_lender.id, loan_id: loan_id, amount: amount.to_f, expected_return: expected_return)
       current_lender.increment!(:total_invested, amount.to_f)
       loan.increment!(:amount_funded, amount.to_f)
-      loan.decrement!(:amount, amount.to_f)
-      loan.update_attributes(funded?: true) if loan.amount_funded >= loan.amount
+      loan.decrement!(:amount_remaining, amount.to_f)
+      loan.update_attributes(funded?: true) if loan.amount_funded >= loan.amount_requested
       if loan.funded?
         CreatePayment.run(loan: loan)
       end

@@ -33,13 +33,14 @@ class LoansController < ApplicationController
   end
 
   def new
+    render layout: 'lendees'
   end
 
   def create
     rate = get_rate current_lendee.credit_range
     # TODO: write transaction script for CreateLoan
     # CreateLoan.run(loan_params.merge!(rate: rate, lendee_id: current_lendee.id, flash: flash))
-    if Loan.create(loan_params.merge(rate: rate, lendee_id: current_lendee.id))
+    if Loan.create(loan_params.merge(rate: rate, lendee_id: current_lendee.id, amount_remaining: loan_params[:amount_requested]))
       flash[:success] = "Your loan was created successfully"
       redirect_to profile_path
     else
@@ -55,7 +56,7 @@ class LoansController < ApplicationController
   end
 
   def loan_params
-    params.require(:loan).permit(:amount, :term, :expiration_date)
+    params.require(:loan).permit(:amount_requested, :term, :expiration_date)
   end
 
   def updated_loan_params

@@ -4,11 +4,11 @@ module LoanHelper
   end
 
   def loan_percent_funded(loan)
-    (loan.amount_funded/loan.amount).round(2)*100
+    (loan.amount_funded/loan.amount_requested).round(2)*100
   end
 
   def amount_remaining(loan)
-    "%.2f" % (loan.amount - loan.amount_funded)
+    "%.2f" % (loan.amount_requested - loan.amount_funded)
   end
 
   def days_remaining(loan)

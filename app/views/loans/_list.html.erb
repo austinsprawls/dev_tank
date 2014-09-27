@@ -29,11 +29,11 @@
           <td><%= loan.rate %>%</td>
           <td><%= loan.term %></td>
           <td><%= credit_range(loan) %></td>
-          <td>$<%= "%.2f" % loan.amount %></td>
+          <td>$<%= "%.2f" % loan.amount_requested %></td>
           <td>
 
             <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow= "<%= loan.amount_funded.round(2) %>" aria-valuemin="0" aria-valuemax="<%= loan.amount %>" style="width: <%= (loan.amount_funded/loan.amount)*100 %>%">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow= "<%= loan.amount_funded.round(2) %>" aria-valuemin="0" aria-valuemax="<%= loan.amount_requested %>" style="width: <%= (loan.amount_funded/loan.amount_requested)*100 %>%">
                 <%= loan_percent_funded(loan).round(2) %>%
               </div>
             </div>
