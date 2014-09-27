@@ -85,13 +85,25 @@
                 <td>Total Amount</td>
                 <td>Total Paid</td>
                 <td>Due Date</td>
+                <td>Action</td>
               </tr>
             <% @payments.each do |payment| %>
                 <tr>
                   <td><%= payment.created_at.strftime('%d %b') %></td>
                   <td>$<%= payment.amount.round(2) %></td>
-                  <td class="minus">$<%= payment.amount_paid.round(2) %></td>
+                  <% if !payment.paid? %>
+                    <td class="minus">$<%= payment.amount_paid.round(2) %></td>
+                  <% else %>
+                    <td>$<%= payment.amount_paid.round(2) %></td>
+                  <% end %>
                   <td><%= payment.due_date.strftime('%d %b') %></td>
+                  <% if !params[:id] %>
+                    <% if !payment.paid? %>
+                      <td><%= link_to "Pay Now", edit_lendee_payment_path(current_lendee.id, payment.id), class: 'btn btn-default' %></td>
+                    <% else %>
+                      <td>PAID</td>
+                    <% end %>
+                  <% end %>
                 </tr>
             <% end %>
           </table>
