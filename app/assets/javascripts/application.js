@@ -28,3 +28,5 @@
 //= require jquery-tablesorter/widgets/widget-repeatheaders
 //= require jquery-tablesorter/parsers/parser-metric
 //= require jquery-tablesorter/extras/jquery.quicksearch
+
+//= require review_quik_invest

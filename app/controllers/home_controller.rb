@@ -6,7 +6,6 @@ class HomeController < ApplicationController
   def check_rate
     @amount_requested = rate_params['amount']
     @credit_range = rate_params['credit_range']
-    puts @amount_requested
     render layout: 'home_ancillary'
   end
 

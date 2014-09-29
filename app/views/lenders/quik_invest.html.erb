@@ -1,0 +1,10 @@
+<h2>Welcome to Quik Invest</h2>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_tag portfolio_quik_invest_review_path, method: :get do -%>
+      <%= text_field_tag :total, nil, placeholder: "Enter the total amount to invest", class: "form-control"  %><br/><br/>
+      <%= text_field_tag :max, nil, placeholder: "Enter the max amount per investment", class: "form-control" %><br/><br/>
+      <%= submit_tag "Review order", class: 'btn btn-success' %>
+    <% end -%>
+  </div>
+</div>

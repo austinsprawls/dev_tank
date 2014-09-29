@@ -4,7 +4,12 @@ class InvestmentsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def create
-    CreateInvestment.run(strong_params.merge!(current_lender: current_lender, current_lendee: current_lendee, flash: flash))
+    result = CreateInvestment.run(strong_params.merge!(current_lender: current_lender, current_lendee: current_lendee))
+    if result[:success?]
+      flash[:success] = result[:flash]
+    else
+      flash[:alert] = result[:flash]
+    end
     redirect_to browse_loans_path
   end
 

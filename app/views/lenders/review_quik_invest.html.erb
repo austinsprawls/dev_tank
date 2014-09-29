@@ -1,0 +1,15 @@
+<style>
+  .arc path{
+    stroke: #fff;
+  }
+</style>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<h2>Review your order</h2>
+
+<%= form_tag portfolio_quik_invest_confirm_path do -%>
+  <%= hidden_field_tag :max, params[:max] %>
+  <%= hidden_field_tag :total, params[:total]%>
+  <%= submit_tag "Submit Order", class: 'btn btn-success'%>
+<% end -%>

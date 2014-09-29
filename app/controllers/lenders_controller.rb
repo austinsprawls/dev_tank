@@ -1,3 +1,6 @@
+require 'transaction_scripts/confirm_quik_invest'
+require 'transaction_scripts/create_investment'
+
 class LendersController < ApplicationController
   before_action :authenticate_lender!
 
@@ -23,8 +26,28 @@ class LendersController < ApplicationController
     redirect_to portfolio_path
   end
 
+  def quik_invest
+  end
+
+  def review_quik_invest
+
+  end
+
+  def confirm_quik_invest
+    result = ConfirmQuikInvest.run(quik_invest_params.merge(current_lender: current_lender))
+    total_invested = result[:total_invested]
+    invested_loan_count = result[:invested_loan_count]
+
+    flash[:success] = "You succesfully invested $#{total_invested} in #{invested_loan_count} loans"
+    redirect_to portfolio_path
+  end
+
   def fund_params
     params.require(:lender).permit(:funds)
+  end
+
+  def quik_invest_params
+    params.permit(:total, :max)
   end
 
 end
