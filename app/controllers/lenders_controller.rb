@@ -18,7 +18,7 @@ class LendersController < ApplicationController
       flash[:alert] = "You must enter a value greater than zero"
     else
       current_lender.increment!(:funds, fund_params[:funds].to_f)
-      flash[:success] = ""
+      flash[:success] = "You successfully added $#{fund_params[:funds]} to your account"
     end
     redirect_to portfolio_path
   end
