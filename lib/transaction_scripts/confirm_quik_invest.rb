@@ -8,7 +8,7 @@ class ConfirmQuikInvest
     total_to_invest = quik_invest_params[:total].to_f
     max_invest = quik_invest_params[:max].to_f
     loan_rates = Loan.all.map {|loan| loan.rate}.uniq
-    number_of_investments = total_to_invest/max_invest/loan_rates.size
+    number_of_investments = (total_to_invest/max_invest/loan_rates.size).to_i
     total_invested = 0.0
     invested_loan_count = 0
 

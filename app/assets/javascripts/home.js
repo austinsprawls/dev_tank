@@ -52,7 +52,7 @@ $(document).ready(function(){
   $("#lenderTable").tablesorter({
     theme : 'blue',
     // sort on the first column and second column in ascending order
-    sortList: [[0,1]]
+    sortList: [[0,0]]
   });
 
 });

@@ -1,5 +1,4 @@
 require 'transaction_scripts/confirm_quik_invest'
-require 'transaction_scripts/create_investment'
 
 class LendersController < ApplicationController
   before_action :authenticate_lender!
@@ -7,9 +6,9 @@ class LendersController < ApplicationController
   def show
     @lender = current_lender
     @total_invested = @lender.total_invested
-    all_lender_investments = Investment.where(lender_id: @lender.id)
+    all_lender_investments = Investment.order('created_at DESC').where(lender_id: @lender.id)
     @lender_investments = all_lender_investments.limit(5)
-    all_lender_payments = Payment.where(lender_id: current_lender.id)
+    all_lender_payments = Payment.order('created_at DESC').where(lender_id: current_lender.id)
     @lender_payments = all_lender_payments.limit(5)
     payment_amounts = all_lender_payments.select{|payment| payment.paid?}.map {|payment| payment.amount}
     @total_collected = payment_amounts.inject(:+)
