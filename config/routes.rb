@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   #LENDER routes
   get 'portfolio' => 'lenders#show'
+  put 'portfolio/add-funds' => 'lenders#add_funds'
   resources :lenders, only: [:edit, :update] do
     resources :payments, only: [:show, :index]
     resources :investments, only: [:show, :index]

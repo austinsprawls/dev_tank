@@ -29,17 +29,35 @@
         </div>
         <div class="panel-body">
           <h3>$<%= current_lender.funds %></h3>
-          <%= link_to "Add Funds", "#", class: 'btn btn-primary' %>
+          <!-- Button trigger modal -->
+          <button class="btn btn-primary" data-toggle="modal" data-target="#fundsModal">Add Funds</button>
+        </div>
+      </div>
+
+      <div class="modal fade" id="fundsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title">How much do you want to add?</h4>
+            </div>
+            <div class="modal-body">
+              <%= form_for :lender, method: :put, url: portfolio_add_funds_path do |f| %>
+                <%= f.text_field :funds, placeholder: '$', class: 'form-control' %><br/>
+                <%= f.submit "Add funds", class: 'btn btn-success' %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h2 class="panel-title">Total Returns</h2>
+          <h2 class="panel-title">Total Collected</h2>
         </div>
         <div class="panel-body">
-          <% if @total_returns %>
-          <h3>$<%= @total_returns %></h3>
+          <% if @total_collected %>
+          <h3>$<%= @total_collected %></h3>
           <% end %>
         </div>
       </div>
