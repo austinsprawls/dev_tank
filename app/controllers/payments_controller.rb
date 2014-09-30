@@ -23,12 +23,22 @@ class PaymentsController < ApplicationController
   end
 
   def update
-    result = UpdatePayment.run(payment_params.merge(params).merge(flash: flash))
+    result = UpdatePayment.run(payment_params.merge(params))
     if result[:success?]
+      flash[:success] = result[:flash]
       redirect_to profile_path
     else
+      flash[:alert] = result[:flash]
       redirect_to edit_lendee_payment_path(params[:lendee_id], params[:id])
     end
+  end
+
+  def bulk_pay
+    payments = Payment.where(lendee_id: current_lendee.id)
+    payments.each do |payment|
+      UpdatePayment.run(id: payment.id, amount_paid: payment.amount)
+    end
+    redirect_to profile_path
   end
 
   def payment_params

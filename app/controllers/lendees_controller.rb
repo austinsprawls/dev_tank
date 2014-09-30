@@ -3,14 +3,15 @@ class LendeesController < ApplicationController
 
   def show_profile
     @lendee = current_lendee
-    @payments = Payment.where(lendee_id: @lendee.id)
+    all_payments = Payment.where(lendee_id: @lendee.id)
     unpaid_payment_count = 0
     unpaid_payment = false
-    @payments.each do |payment|
+    all_payments.each do |payment|
       if !payment.paid?
         unpaid_payment_count += 1
       end
     end
+    @payments = all_payments.order('created_at DESC').limit(unpaid_payment_count)
     unpaid_payment = true if unpaid_payment_count > 0
     flash[:alert] = "You have #{unpaid_payment_count} unpaid payments" if unpaid_payment
     @loan = @lendee.loan

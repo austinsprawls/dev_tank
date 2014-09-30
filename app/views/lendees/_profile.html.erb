@@ -107,7 +107,10 @@
                 </tr>
             <% end %>
           </table>
-          <%= link_to "View all payments", lendee_payments_path(@lendee.id) %>
+          <%= link_to "View all payments", lendee_payments_path(@lendee.id) %><br /><br/>
+          <%= form_tag bulk_pay_path do -%>
+            <%= submit_tag "Pay All", class: 'btn btn-default' %>
+          <% end -%>
           </div>
         </div>
       </div>

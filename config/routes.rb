@@ -39,6 +39,9 @@ Rails.application.routes.draw do
 
   #INVESTMENT routes
   resources :investments, only: [:create]
+
+  #PAYMENT routes
+  post 'bulk-pay' => 'payments#bulk_pay'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
