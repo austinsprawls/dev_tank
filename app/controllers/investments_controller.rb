@@ -16,8 +16,10 @@ class InvestmentsController < ApplicationController
   def index
     if current_lendee
       @investments = Investment.where(loan_id: current_lendee.loan.id)
+      render layout: 'lendees'
     elsif current_lender
       @investments = Investment.where(lender_id: current_lender.id)
+      render layout: 'lenders'
     end
   end
 

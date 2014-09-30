@@ -1,0 +1,29 @@
+<div class="container">
+
+  <table id="paymentsTable" class="table table-striped tablesorter">
+    <thead>
+      <tr>
+        <th>Date Added</th>
+        <th>Amount</th>
+        <th>Amount Paid</th>
+        <th>Due Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @payments.each do |payment| %>
+        <tr>
+          <td><%= payment.created_at.strftime('%d %b') %></td>
+          <td class="minus">- $<%= payment.amount %></td>
+          <td>$<%= payment.amount_paid %></td>
+          <td><%= payment.due_date.strftime('%d %b') %></td>
+          <% if payment.paid?%>
+            <td>PAID</td>
+          <% else %>
+            <td><%= link_to "Pay Now", edit_lendee_payment_path(current_lendee.id, payment.id), class: 'btn btn-default' %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

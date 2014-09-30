@@ -1,0 +1,23 @@
+<div class="container">
+
+  <table id="investmentsTable" class="table table-striped tablesorter">
+    <thead>
+      <tr>
+        <th>Date Added</th>
+        <th>Amount</th>
+        <th>Expected Return</th>
+        <th>Investment ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @investments.each do |investment| %>
+        <tr>
+          <td><%= investment.created_at.strftime('%d %b') %></td>
+          <td class="plus">+ $<%= investment.amount %></td>
+          <td>$<%= investment.expected_return.round(2) %></td>
+          <td>#<%= investment.created_at.to_i %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
