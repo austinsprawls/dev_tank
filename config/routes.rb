@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get 'portfolio' => 'lenders#show'
   put 'portfolio/add-funds' => 'lenders#add_funds'
   get 'portfolio/quik-invest' => 'lenders#quik_invest'
-  get 'portfolio/quik-invest/review' => 'lenders#review_quik_invest'
+  # get 'portfolio/quik-invest/review' => 'lenders#review_quik_invest'
   post 'portfolio/quik-invest/confirm' => 'lenders#confirm_quik_invest'
   resources :lenders, only: [:edit, :update] do
     resources :payments, only: [:show, :index]

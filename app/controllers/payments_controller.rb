@@ -11,7 +11,10 @@ class PaymentsController < ApplicationController
   end
 
   def show
-    @payment = Payment.find(params[:id])
+    if current_lendee
+      @payment = Payment.find(params[:id])
+    elsif current_lender
+    end
   end
 
   def edit
