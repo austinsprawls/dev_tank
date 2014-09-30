@@ -5,8 +5,10 @@ class PaymentsController < ApplicationController
   def index
     if current_lendee
       @payments = Payment.where(lendee_id: current_lendee.id)
+      render layout: 'lendees'
     elsif current_lender
       @payments = Payment.where(lender_id: current_lender.id)
+      render layout: 'lenders'
     end
   end
 
@@ -34,7 +36,7 @@ class PaymentsController < ApplicationController
   end
 
   def bulk_pay
-    payments = Payment.where(lendee_id: current_lendee.id)
+    payments = Payment.where(lendee_id: current_lendee.id, paid?: false)
     payments.each do |payment|
       UpdatePayment.run(id: payment.id, amount_paid: payment.amount)
     end
