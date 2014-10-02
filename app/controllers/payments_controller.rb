@@ -26,7 +26,9 @@ class PaymentsController < ApplicationController
 
   def update
     result = UpdatePayment.run(payment_params.merge(params))
-    if result[:success?]
+    if result[:loan_completely_paid?]
+      flash[:success] = "Congratulations! You have paid off your loan."
+    elsif result[:success?]
       flash[:success] = result[:flash]
       redirect_to profile_path
     else
@@ -37,8 +39,15 @@ class PaymentsController < ApplicationController
 
   def bulk_pay
     payments = Payment.where(lendee_id: current_lendee.id, paid?: false)
-    payments.each do |payment|
+    total_to_pay = payments.map {|pay| pay.amount}.inject(:+)
+    payments[0..-2].each do |payment|
       UpdatePayment.run(id: payment.id, amount_paid: payment.amount)
+    end
+    result = UpdatePayment.run(id: payments[-1].id, amount_paid: payments[-1].amount)
+    if result[:loan_completely_paid?]
+      flash[:success] = "Congratulations! You have paid off your loan."
+    else
+      flash[:success] = "You successfully paid $#{total_to_pay}"
     end
     redirect_to profile_path
   end
